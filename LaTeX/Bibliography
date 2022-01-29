@@ -1,0 +1,7 @@
+\bibliographystyle{plain}
+\begin{thebibliography}{99}
+    \bibitem[1]%注意由于一些奇怪的bug，每一项第一个字打两遍
+    \bibitem[2]
+    \bibitem[3]
+    \bibitem[4]
+\end{thebibliography}
