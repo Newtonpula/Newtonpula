@@ -1,0 +1,611 @@
+% 美赛模板：正文部分
+
+\documentclass[12pt]{article}  % 官方要求字号不小于 12 号，此处选择 12 号字体
+% \linespread{1.1}
+% \bibliographystyle{plain}
+% 本模板不需要填写年份，以当前电脑时间自动生成
+% 请在以下的方括号中填写队伍控制号
+\usepackage[2203677]{easymcm}  % 载入 EasyMCM 模板文件
+\problem{A}  % 请在此处填写题号
+% \usepackage{mathptmx}  % 这是 Times 字体，中规中矩 
+\usepackage{palatino}  % mathpazo 这palatino是 COMAP 官方杂志采用的更好看的 Palatino 字体，可替代以上的 mathptmx 宏包
+\usepackage{pdfpages}
+\usepackage{longtable}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{listings}
+\usepackage{paralist}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{amssymb}
+\usepackage{threeparttable}
+\usepackage{booktabs}
+\usepackage{diagbox}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{shapepar}
+\usepackage{lastpage}
+\usepackage{cite}
+\usepackage{tablefootnote}
+\usepackage{bm}
+\usepackage{subcaption}
+\usepackage{makecell}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage[tracking=alltext,letterspace=10]{microtype}
+\usepackage{subcaption}
+\usepackage{setspace}
+
+
+\captionsetup{compatibility=false}
+
+\newtheorem{myDef}{Definition}
+\newtheorem{myTheo}{Theorem}
+
+
+
+ \let\itemize\compactitem
+ \let\enditemize\endcompactitem
+% \let\enumerate\compactenum
+% \let\endenumerate\endcompactenum
+% \let\description\compactdesc
+% \let\enddescription\endcompactdesc
+% \usepackage{biblatex} 
+% \usepackage{cite}
+% \usepackage{natbib}
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
+\title{A Glimpse of Music Change through Influence Networks}  % 标题
+
+% 如需要修改题头（默认为 MCM/ICM），请使用以下命令（此处修改为 MCM）
+\renewcommand{\contest}{MCM}
+
+% 文档开始
+\begin{document}
+\begin{abstract}
+	
+	% (Need to be reviewed)
+	(start summary here)
+	
+	In \textsc{Task 1}, we
+	
+	In \textsc{Task 2},
+	
+	In \textsc{Task 3}, 
+	
+	In \textsc{Task 4},  
+	
+	In \textsc{Task 5}, 
+	
+	In \textsc{Task 6}, 
+	
+	In \textsc{Task 7}, 
+				
+	Finally, we 
+	
+	
+	
+	
+	% Here is the abstract of your paper.
+	
+	% Firstly, that is ...
+	
+	% Secondly, that is ...
+	
+	% Finally, that is ...
+	
+	% 美赛论文中无需注明关键字。若您一定要使用，
+	% 请将以下两行的注释号 '%' 去除，以使其生效
+	\vspace{5pt}
+	\textbf{Keywords}: Markov chains, Random forest algorithm, Hierarchical clustering 
+	
+\end{abstract}
+    
+\maketitle  % 生成 Summary Sheet
+
+\tableofcontents
+
+
+
+
+% 正文开始
+% Chapter 1: Introduction
+\section{Introduction}
+
+
+\subsection{Problem Background}
+Heart-pounding and breathtaking, the bicycle road race is a both entertaining and intense sport. Road racing in its modern form originated in the late 19th century and has been part of the Summer Olympic Games since the modern sequence started in Athens in 1896. Eddy Merckx – “The Cannibal”, Binard Hinault – “The Badger”, Mario Cipollini – “The Lion King”… Countless legendary cyclists spark in this domain.
+ 
+\begin{figure}[H]
+	\centering
+	\subfigure[Characteristics of Bicycle Road Races]
+	{\includegraphics[width=0.45\textwidth]{bg1.jpg}}
+	\subfigure[Snaps of Bicycle Road Races]
+	{\includegraphics[width=0.5\textwidth]{001.jpeg}}
+	\caption{Introduction to Bicycle Road Races}
+\end{figure}
+
+“It never gets easier, you just go faster.” For centuries, cycling contestants have been striving to exceed the human body limit and set a more challenging record. In the effort to achieve such goals, cyclists grudually realize that huge power reserve alone does not necessarily equal transcending competition performance. Therefore, scientific distribution of the athlete’s total power resources and accurate analysis of external site factors are essential elements to consider. 
+
+
+
+\subsection{Restatement of the Problem}
+A cyclist’s total power resource is limited and therefore requires to be reasonably allocated throughout the competition. Both the rider’s internal physical status and the external environmental factors affect the rider’s current power application. This paper aims at establishing a universal model to optimize the use of rider’s full strength reserve and minimize the time required to cover a given distance.
+
+When building the model, we need to take the following \textit{restricting factors} into consideration:
+
+\begin{itemize}
+	\setlength{\parsep}{0ex} %段落间距
+	\setlength{\topsep}{2ex} %列表到上下文的垂直距离
+	\setlength{\itemsep}{1ex} %条目间距
+	\item The total amount of a rider’s power resource is limited
+	\item The rider’s sense of fatigue may accumulate or recover over time and the current maximum power output is influenced by past cycling status ( Consumption from acceleration, exceeding the power curve limits, etc.)
+	\item The rider’s position on the racing course affects his or hers power distribution decisions ( whether to accelerate, maintain the original speed or decelerate )
+\end{itemize}
+
+\vspace{3ex} %垂直间距
+Considering the background information and restricted conditions identified in the problem statement, we need to solve the following \textit{problems}:
+
+\begin{itemize}
+	\setlength{\parsep}{0ex} %段落间距
+	\setlength{\topsep}{2ex} %列表到上下文的垂直距离
+	\setlength{\itemsep}{1ex} %条目间距
+	\item Determine the power profiles of two types in both male and female riders
+	\item Establish a power distribution model which applies to all types of riders
+	\item Include weather and environmental factors in the previous model and analyze its sensitivity
+	\item Expand the model to apply to optimizing power distribution in team time trials
+	\item Analyze model sensitivity when deviation from theoretical model prediction occurs in actual cycle races
+	
+\end{itemize}
+
+
+
+\subsection{Our work}
+
+
+
+\section{Assumptions and Notations}
+
+
+
+\section{General Model Construction}
+This general model is constructed to optimize an individual's power output throughout a bicycle road race. A rider's current power application strategy is established based on two main factors: \textit{\textbf{internal physical status}} and \textit{\textbf{external environment}}. First, we characterize the \textbf{power-duration curve} to describe a rider's personal power profile.
+(?)
+
+
+
+\subsection{Power-Duration Curve}
+A power-duration curve shows how long a rider can keep on cycling while maintaining a specific steady power output. Each dot on the curve represents a point-of-failure: the rider fails to generate the target power due to the accumulated fatigue.
+
+\begin{table}[H]
+	\centering
+	\renewcommand\arraystretch{1.6}
+	\caption{Noun Definition}
+	\begin{tabular}{cc}
+		\toprule
+			\textbf{Failure} &
+		\makecell{failure to maintain the previous power output,\\ also viewed as a point of maximal effort (\textbf{P=MPA})}\\
+		\midrule
+			\textbf{Exhausion} &
+		
+			 failure to produce the target wattage (\textbf{W=0})\\
+		\midrule
+			\textbf{Maximal Power Available (MPA)} &
+		
+			\makecell{how much power the rider currently has,\\ the maximal power limit a rider can produce \\at a specific instant, factoring in \textit{fatigue}}\\
+		\midrule
+			\textbf{Time-to-exhaustion (TTE)} &
+			
+			\makecell{the duration time from a given point\\ to the point-of-failure} \\
+		\hline
+			\textbf{Critical Power (CP)} &
+			\makecell{also known as \textbf{Functional Threshold Power (FTP)},\\ the highest power that an athlete can sustain\\ without accumulating shortterm fatigue}\\
+		\hline
+			\textbf{Target Power(TP)} & the rider's current power output\\
+		\hline
+			\textbf{W} &
+			\makecell{the amount of energy currently stored}\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+The operating mechanism can be demonstrated in this way: 
+
+\begin{itemize}
+	\setlength{\parsep}{0ex} %段落间距
+	\setlength{\topsep}{2ex} %列表到上下文的垂直距离
+	\setlength{\itemsep}{1ex} %条目间距
+	\item \textit{phase1}: At the start, the rider's MPA equals the peak power. He or she sets out to ride at a particular power output and maintains it. \textbf{\textit{Fatigue}} accumulates during the process, which results in the continuous declination of the rider's \textbf{\textit{MPA (Maximal Power Available)}}.
+	\item \textit{phase2}: After a certain period of time, the decreasing MPA equals rider's fixed,steady power output. Therefore, the rider reaches his or hers power limit (\textbf{\textit{point-of-failure}}). At this point the rider must lower current power output due to the MPA limitation. But it doesn’t mean the cyclist have no strength to continue riding anymore. During phase2, even if the cyclist slows down, the target power is still greater than the Critical Power. Thus the MPA is still decreasing, but in a lower rate, which consists with reality.
+	\item \textit{phase3}: The Target Power is lower than the Critical Power. By means of adjustments, such as decelerating, regulating breathing, decreasing pedaling frequences and so on, fatigue can be reduced, MPA can rise again and the rider can attain recovery.
+	\item \textit{phase4}: The Critical Power equals the Target Power and MPA remains unchanged. The rider can return to riding at a new steady-state target power.
+\end{itemize}
+   
+
+
+
+In this model, we first build an individual rider's power-duration curve.
+
+\begin{figure}[H]
+	\centering
+	\subfigure[Men's Power-duration Curve]
+	{\includegraphics[width=0.45\textwidth]{man.png}}
+	\subfigure[Women's Power-duration Curve]
+	{\includegraphics[width=0.5\textwidth]{woman.png}}
+	\caption{Power-duration Curve of All Types of People}
+\end{figure}
+
+We use \textbf{the Linear Least Square Fitting method} to conduct drawing-dot construction from online data sources (?where exactly?) . Results shown in Figure 3 below indicates that the Power-duration Curve is similar in form with the \textit{Inverse Proportional Function}. That is:
+
+\begin{equation}
+	 P=\dfrac{a}{T+b}+c 
+\end{equation}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=14cm]{predict.png}
+	\caption{Scatter Plot of Rider's Statistical Data}
+\end{figure}
+
+
+\subsection{Maximal Power Available (MPA) Curve}
+A Power Curve shows the relationship of power and duration time. It portrays the power profile of different kinds of riders visually. But it cannot touch the essential mechanism of how it operates. There are still many problems we cannot explain: When a rider cycles for a while and swtiches to another power output, how long can he maintain this new power output? We lack a variable to describe the accumulated fatigue due to the previous effort. Besides, due to fatigue, the duration time of certain power output will decrease. We also need an index to describe the effect caused by fatigue.
+
+MPA is the index of fatigue, bridging the link between the consumption and recovery of energy. From the following Figure 4, we can have a clear concept about the mechanism of the MPA.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=12.5cm]{MPA curve2.0.jpg}
+	\caption{Operation Mechanism of the Whole Cycling Process}
+\end{figure}
+
+A MPA curve reflects the essence of what will accumulating fatigue result in and what will be reattained after recovery. As is depicted in Figure 4 below, if $ P>CP $, fatigue will increase and MPA will decrease; else if $ P<CP $, the rider is under a relatively relaxed state, fatigue will decrease and MPA will recover.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=11cm]{PCP.png}
+	\caption{MPA Operating Mechanism}
+\end{figure}
+
+Then we go further to explore the exact function expression of MPA to quantify this recovery and consumption mechanism. MPA is actually the variable discribing the fatigue,and fatigue is the function of the energy has consumed. Thus, we can consider that MPA is the function of the consumed energy. Therefore, we construct a simple model (in Figure 6) to help us visualize this function:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=12cm]{box.jpg}
+	\caption{Box Model to Demonstrate Energy Consumption Mechanism}
+\end{figure}
+
+The following formula can be obtained by reasoning:
+
+$ \alpha $ here is the recovery coefficient of $ W $.
+
+\begin{equation}
+	MPA=f(W)
+\end{equation}
+\begin{equation}
+	P_{t} \le MPA
+\end{equation}
+\begin{equation}
+	W=W_{0}-\int_{0}^{T}(\frac{a}{T+b}+c)dT+\int_{0}^{T}\alpha dT
+\end{equation}
+
+From equation (2)(3)(4) we can deduce the results:
+
+\begin{equation}
+	\frac{a}{T+b}+c = MPA(W_{0}-a+\frac{ab}{T+b})
+\end{equation}
+\begin{equation}
+	MPA=\dfrac{1}{b}W+c-\frac{W_{0}-a}{b}
+\end{equation}
+
+As a result, the final MPA model is obtained:
+\begin{equation}
+	W =  W_{0}-\int_{0}^{T}P_{t} dT+\int_{0}^{T}cdT \\\
+\end{equation}
+\begin{equation}
+	P \le \dfrac{1}{b}W+c-\frac{W_{0}-a}{b} \\\
+\end{equation}
+
+
+\subsection{Model of Riding Drag Force}
+A rider's riding drag force consists of four aspects\cite{poiy}: 
+\textbf{\textit{Rolling resistance, slope resistance, air resistance, inertia resistance}}.
+
+\begin{itemize}
+	\setlength{\parsep}{0ex} %段落间距
+	\setlength{\topsep}{2ex} %列表到上下文的垂直距离
+	\setlength{\itemsep}{1ex} %条目间距
+	\item \textbf{\textit{Rolling Resistance}}: resistance to rolling (or rolling tendency) on another body due to deformation at the contact between the body and the supporting surface
+	\item \textbf{\textit{Slope resistance}}: component of the gravity force along the slope of the ramp
+	\item \textbf{\textit{Air resistence}}: the component force formed by the air force in the motion direction when the bike moves relatively to the air
+	\item \textbf{\textit{Inertia resistance}}
+	\footnote[1]{We divide cycling sections in our model and consider motion in each section to be uniform. Speed change only occurs on segment points and are considered to be high-order small quantity, so we leave it out. }
+	: the inertia force and inertia moment generated by its mass during variable speed movement
+\end{itemize}
+
+\vspace{2ex}
+
+\begin{table}[H]\large
+	\centering
+	\renewcommand\arraystretch{1.6}
+	\caption{Table of Riding Drag Force}
+	\begin{tabular}{cc}
+		\toprule
+		Drag Force &  Formula\\
+		\midrule
+		\textbf{Rolling resistance} & 
+			$  
+			\mathrm{F}_{\mathrm{f}}=\frac{\mathrm{T}_{\mathrm{f}}}{\mathrm{r}}=\mathrm{F}_{\mathrm{y}} \frac{\mathrm{b}}{\mathrm{r}}=\mathrm{F}_{\mathrm{y}} \delta
+			$\\
+		\textbf{Slope resistance} & $\mathrm{F}_{\theta}=\mathrm{mg} \sin \theta$\\
+		\textbf{Air resistance} & $\mathrm{F}_{\mathrm{w}}=\frac{1}{2} \mathrm{C}_{\mathrm{D}} \mathrm{A_{0}v}^{2}$\\
+		\textbf{Inertia resistance} & $\mathrm{F}=\mathrm{m} \frac{\mathrm{d} \mathrm{v}}{\mathrm{dt}}+\frac{\mathrm{I}}{\mathrm{r}} \frac{\mathrm{d} \omega}{\mathrm{dt}}=\left(\mathrm{m}+\frac{\mathrm{I}}{\mathrm{r}^{2}}\right) \frac{\mathrm{dv}}{\mathrm{dt}}$\\
+		\bottomrule
+	\end{tabular}
+	\begin{tablenotes}
+		\footnotesize
+		\item$^{1}$
+		$ \mathrm{F}_{\mathrm{y}}$: the normal force of ground to tire
+		
+		\item$^{2}$ $\mathrm{T}_{\mathrm{f}} $: the rolling resistance moment,
+		
+		\item$^{3}$ $ \delta $: the rolling resistance coefficient
+		
+		\item$^{4}$ $b$: the normal force $ \mathrm{F}_{\mathrm{z}}$ between the tire and the ground moves forward by distance $b$
+		
+		 \item$^{5}$ $\theta$: the climbing angle
+		  
+		 \item$^{6}$ $\mathrm{C}_{\mathrm{D}} $: the resistance constant
+		 
+		 \item$^{7}$ $ A_{0}$: the windward area
+		 
+		 \item$^{8}$ $v$: the relative velocity
+	\end{tablenotes}
+\end{table}
+
+From Table2 above we can obtain the total formula of riding drag force:
+
+$ m_{1} $ here is front wheel mass, $ m_{2} $ is rear wheel mass, $ m $ is bicycle mass and $ M $ is the mass of the rider.
+
+\vspace{-3ex}
+
+\begin{equation}
+	F=(m_{1}+m_{2}+m+M)g \delta \cos \theta +\dfrac{1}{2}\mathrm{C}_{\mathrm{D}} \mathrm{A_{0}v}^{2}+(m_{1}+m_{2}+m+M)g \sin \theta
+\end{equation}
+\begin{equation}
+	P=(m_{1}+m_{2}+m+M)g \delta v \cos \theta +\dfrac{1}{2}\mathrm{C}_{\mathrm{D}} \mathrm{A_{0}v}^{3}+(m_{1}+m_{2}+m+M)gv \sin \theta
+\end{equation}
+
+(?left align?)
+
+\vspace{2ex}
+
+
+
+\subsection{Power Distribution Model}
+Both the rider's internal physical status and the external environment issues affects his or hers current power output. In the previous models we analyzed the internal factors by depicting personal power profiles and the intrinsic body mechanism in cycling. Then we establish this Power Distribution Model to determine the connection between the rider's position on the track and the optimal output power, applicable at any time point.
+
+Our aim is to figure out how much power the rider should provide on different track positions. That is, how to properly optimize a cyclist’s power to finish the trial in minimal time. 
+
+Actually, physical conditions and strengths are different for each cyclist. Thus, it’s necessary to design the power distribution model according to the power profile of the particular cyclist.
+
+Besides,it is not uncommon for such scenarios to occur in real life: The cyclist who has the greatest sustainable power output however did not succeed in a road race, due to the tactical nature and the influence of drafting and domain. So the strategy of power distribution should also consider the factor of terrain, wind directions and wind strength. 
+
+Our model will take terrain and wind conditons into account. We work on finding the most optimal power distribution solution and attempt to offer cyclists some helpful advice with results drawn from the model constructing process.
+
+First, we idealize and simpify the complex terrain to a neat and clear graph by segmenting the track into separate sections and using smooth lines to connect each segment point( demonstrated in \textit{Figure 7} ). Then we explore the cyclist's different power storage and output power at each segment point. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm]{terrain.jpg}
+	\caption{Simplified Topographic Map}
+\end{figure}
+
+\textbf{The Non-Linear Programing Algorithm} is adopted in building the Power Distribution Model:
+
+\vspace{2ex}
+
+The mathematical model in the following form is the general form of nonlinear programming model,
+
+with at least one in $ f(x) $, $ g_{i}(x) $,$ i=1,2,...,p $ \ and $h_{j}(x) $,$ j=1,2,...,q $ \  being a nonlinear function of $ x $ and $\min f(x)$ stands true.
+
+\begin{equation}
+	\left\{
+	 \begin{aligned}
+	 	g_{i}(x) \le & 0 & i=1,2,...,p\\\
+	 	h_{j}(x) = & 0 & j=1,2,...,q\\\
+	 \end{aligned}
+	 \right.
+\end{equation}
+
+Also, according to the previous analysis, we are already aware that MPA is the function of $ W $, which also restricts the output power in each section. So in each segment, $Pi\le MPA$ stands true. We assume that the cyclist will ride at a steady out putpower in each section. Besides, the cyclist has a total energy, which is $ W_{0} $. From these analysis, we can list below the following constrained condition and the target function that we want to optimize.
+
+$\Longrightarrow$
+We call $ Mg \delta \cos \theta $\  as A, \ 
+$ \dfrac{1}{2}\mathrm{C}_{\mathrm{D}} \mathrm{A_{0}} $ as B, \ 
+$ Mg \sin \theta $ as C.
+
+\begin{equation}
+		\left\{
+		\begin{aligned}
+			0 < & W_{i} \le W_{0} \\\
+			0 < & P_{i} \le \frac{1}{b}W_{i}+c-\frac{W_{0}-a}{b} \\\
+			P_{i} \le & \frac{1}{b}W_{i-1}+c-\frac{W_{0}-a}{b} \\\
+			P_{i} = & Mg \delta v \cos \theta +\dfrac{1}{2}\mathrm{C}_{\mathrm{D}} \mathrm{A_{0}v}^{3}+Mgv \sin \theta \\\
+			= & Av+Bv^{3}+Nv \sin \theta \\\
+			W_{i} - & W_{i-1} =\int_{0}^{t_{i}}P_{i}dt \\\
+		\end{aligned}
+		\right.
+\end{equation}		
+
+
+\begin{algorithm}[H]
+	\KwIn{$c$,$W_{0}$,$n$,$p$}
+	\KwOut{$W_{i}$}
+	\BlankLine
+	\caption{ Calculation of $ W_{i} $, $W_{i}$($c$,$W_{0}$,$n$,$p$)}
+	\For{$i=1$ to $n$}{
+		$W_{i}=W_{i-1}-p_{i}t_{i}+ct_{i}$\;
+	}
+	\textbf{output} $x_{1}-x_{12}$\;
+\end{algorithm}
+
+
+
+
+
+\section{Task1: Power Profile of Different Rider Types}
+An individual rider's power profile is characterized by four critical aspects: 
+\begin{itemize}
+	\setlength{\parsep}{0ex} %段落间距
+	\setlength{\topsep}{2ex} %列表到上下文的垂直距离
+	\setlength{\itemsep}{1ex} %条目间距
+	\item Sprint abilities in 5s
+	\item Anaerobic capacity described by 1 minute maximum power
+	\item $VO_2$  max capability in 5 min timespan
+	\item FTP( Functional Threshold Power) in 20 min timespan
+\end{itemize}
+
+\begin{table}[H]
+	\centering
+	\renewcommand\arraystretch{1.75}
+	\caption{Point Location}
+	\begin{tabular}{ccc}
+		\toprule
+		Noun & Interpretation & Position in P-T Graph\\
+		\hline
+		\textbf{Sprint Abilities} & \makecell{the maximum power output\\ one can maintain in 5s} & (P, T=5s)\\
+		\hline
+		\textbf{Anaerobic Capacity} & \makecell{the amount of work\\ one can perform at an intensity above\\ lactate threshold power output} & (P, T=1min)\\
+		\hline
+		\textbf{\bm{$VO_2$} Max Capability} & \makecell{maximal oxygen consumption rate} & (P, T=5min)\\
+		\hline
+		\makecell{\textbf{FTP}} & \makecell{the highest average power one\\ can sustain for a timespan of 60 minutes
+		\tablefootnote[1]{We prefer to calculate FTP as 95\% of the highest power they can average for 20 minutes, since performing a 60-minute maximal test is very difficult.}} & (P, T=20min)\\
+		\bottomrule
+	\end{tabular}
+	
+\end{table}
+
+From these four characteristics we can depict the Power Profile Curve of different rider types and genders.
+
+\vspace{2ex}
+
+By means of the \textbf{Linear Least Square Fitting method} (specifics in 3.1), it can be seen that Power Profile curve matches \textbf{Inverse Proportional Function}. That is:
+
+\begin{equation}
+	P=\dfrac{a}{T+b}+c 
+\end{equation}
+
+We conduct data fitting and tracing using collected data of \textit{Sprinters} (M1 and W1) and \textit{Time Trialists} (M2 and W2). Through  the method of curve fitting (shown in Figure 4, 5 and 6),  we can get the coefficient value of $ a,b,c,W_0 $ and the four values to characterize a rider's Power Profile (shown in Table 3).
+
+\begin{table}[H]
+	\centering
+	\renewcommand\arraystretch{1.6}
+	\caption{Curving Fitting Results}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		& \textbf{\makecell{Men\\ Sprinter}} & \textbf{\makecell{Men\\ Time Trialist}} & \textbf{\makecell{Women\\ Sprinter}} & \textbf{\makecell{Women\\ Time Trialist}} \\
+		\hline
+		a/W         & 33010        & 22910             & 28020          & 21090               \\
+		\hline
+		b/s         & 21.49        & 23.44             & 29.14          & 27.83               \\
+		\hline
+		c/W         & 191.1        & 321.8             & 150.7          & 248.9               \\
+		\hline
+		$ W_0 $/J        & 92952        & 52620             & 57480          & 34080              \\
+		\hline
+	\end{tabular}
+\end{table}
+
+Power Curve Expression for Men Sprinter:
+
+\begin{equation}
+	P=\dfrac{33010}{T+21.49}+191.1
+\end{equation}
+
+Power Curve Expression for Men Time Trialist:
+
+\begin{equation}
+	P=\dfrac{22910}{T+23.44}+321.8
+\end{equation}
+
+Power Curve Expression for Women Sprinter:
+
+\begin{equation}
+	P=\dfrac{28020}{T+29.14}+150.7
+\end{equation}
+
+Power Curve Expression for Women Time Trialist:
+
+\begin{equation}
+	P=\dfrac{21090}{T+27.83}+248.9 
+\end{equation}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=12cm]{all in one.png}
+	\caption{Combined Comparison Chart of Power Profiles}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\subfigure[Power Profile of Men Sprinters]
+	{\includegraphics[width=0.49\textwidth]{M1.png}}
+	\subfigure[Power Profile of Men Time Trialists]
+	{\includegraphics[width=0.49\textwidth]{M2.png}}
+	\caption{ Power Profile of Men}
+\end{figure}
+
+
+
+\section{Task2: Model Application to Famous Tracks and Self-designed Track}
+We constructed the Power Distribution Model on the basis of Power Profile, the mechanism of MPA and Riding Drag Force Model in the previous section. In this section we will apply the theoretical model to practical circumstances.
+
+\vspace{2ex}
+
+First we use data from \textit{the 2021 Olympic Time Trial course in Tokyo, Japan} to verify.
+
+The Tokyo's olympic games' men and women individual time trials use the same track, in which men need to race for a total of 44.2km in two laps, while women need to race for a total of 22.1km in one lap. The starting point and ending point are located in Fuji international racetrack. After leaving the racetrack, go clockwise through No. 151 Shizuoka County Road and then return to the racetrack. See \textit{Figure10} for terrain map:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=12cm]{tokyo.png}
+	\caption{Terrain Map for 2021 Tokyo Olympic Games}
+\end{figure}
+
+We divide men trial tracks into 12 pieces and women trial tracks into 6 pieces. Then we use methods and models mentioned in \textit{Section3} to test and verify whether the ideal shortest completion time in theory consists with the actual situation. At the same time the best optimal solution to apply power while traversing a certain trial course is extracted. Results are displayed in \textit{Table 3} below:
+
+\begin{table}[H]
+	\centering
+	\caption{Tokyo Verification Results of Man}
+		\begin{tabular}{lllll}
+			\toprule
+			& Men Sprinter & Men Time Trialist & Women Sprinter    & Women Time Trialist \\
+			\midrule
+			T/s   & 3413.6       & 3121.2            & 1740.6            & 1622.5              \\
+			T/min & 56.89        & 52.02             & 29.01             & 27.04               \\
+			T1    & 329.9413     & 277.3129          & 359.7162          & 302.1894            \\
+			T2    & 179.0708     & 150.5386          & 196.4192          & 164.0363            \\
+			T3    & 461.9093     & 388.1904          & 501.854           & 423.004             \\
+			T4    & 456.1678     & 404.1072          & 141.2479          & 166.7034            \\
+			T5    & 188.3738     & 158.4443          & 245.4311          & 172.551             \\
+			T6    & 424.1429     & 372.3426          & 295.8991          & 393.9921            \\
+			T7    & 321.9376     & 277.2762          & \multirow{6}{*}{} & \multirow{6}{*}{}   \\
+			T8    & 179.0453     & 150.5212          &                   &                     \\
+			T9    & 439.9        & 388.1629          &                   &                     \\
+			T10   & 234.6        & 220.7371          &                   &                     \\
+			T11   & 108.0794     & 119.1823          &                   &                     \\
+			T12   & 190.4288     & 214.3499          &                   &                    \\
+			\bottomrule
+		\end{tabular}
+\end{table}
+
+
+\clearpage
+\bibliographystyle{plain}
+\bibliography{000}
+
+\end{document}  % 结束$
