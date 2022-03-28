@@ -1,9 +1,9 @@
-- 👋 Hi, I’m @Newtonpula.
-- 👀 I’m interested in pure and applied mathematics, computer science, computational neuroscience...
-- 🌱 I’m currently learning in SJTU.
-- 📫 Contact me via email newtonpula@sjtu.edu.cn
+- Hi, I’m @Newtonpula.
+- I’m interested in pure and applied mathematics, computer science, computational neuroscience...
+- I’m currently learning in SJTU.
+- Contact me via email newtonpula@sjtu.edu.cn
 <!---
-💞️ I’m looking to collaborate on ...
+    I’m looking to collaborate on ...
 --->
 
 <!---
