@@ -80,5 +80,10 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{\songti \zihao{4} \textbf{      }}
+\title{\songti \textbf{      }}
 \author{      }
+
+\begin{document}
+\maketitle
+
+\end{document}
