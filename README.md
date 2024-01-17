@@ -1,6 +1,6 @@
 - Hi, I’m @Newtonpula.
 - I’m interested in pure and applied mathematics, computer science, computational neuroscience...
-- I’m currently learning in SJTU.
+- I'm an undergraduate in SJTU. Currently I'm an affiliate Arts and Sciences student in UCL.
 - Contact me via email newtonpula@sjtu.edu.cn
 <!---
     I’m looking to collaborate on ...
